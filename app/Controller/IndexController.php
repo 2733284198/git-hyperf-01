@@ -14,6 +14,7 @@ namespace App\Controller;
 use Hyperf\DbConnection\Db;
 use Hyperf\Utils\Arr;
 use Hyperf\Utils\ApplicationContext;
+use Hyperf\Snowflake\IdGeneratorInterface;
 
 class IndexController extends AbstractController
 {
@@ -30,18 +31,31 @@ class IndexController extends AbstractController
         ];
     }
 
+    public function testsnowflake()
+    {
+
+        $container = ApplicationContext::getContainer();
+        $generator = $container->get(IdGeneratorInterface::class);
+
+        $id = $generator->generate();
+        return $id;
+    }
+
     public function testredis()
     {
+        $res = phpinfo();
+        return $res;
+
         $container = ApplicationContext::getContainer();
 
         $redis = $container->get(\Hyperf\Redis\Redis::class);
         $result = $redis->keys('*');
 
-        return $result;
+//        return $result;
 
         $k1 = $redis->set('k1', 'v1');
         $k1 = $redis->get('k1');
-        return $k1;
+//        return $k1;
 
     }
 

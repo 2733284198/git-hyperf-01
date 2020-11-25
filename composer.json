@@ -31,7 +31,8 @@
         "hyperf/crontab": "~2.0.0",
         "hyperf/jet": "^0.3.0",
         "hyperf/swagger": "^2.0",
-        "hyperf/hyperf-admin": "^2.0"
+        "hyperf/snowflake": "^2.0",
+        "hyperf/db": "^2.0"
     },
     "require-dev": {
         "swoole/ide-helper": "^4.5",
