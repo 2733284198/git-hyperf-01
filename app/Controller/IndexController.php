@@ -37,7 +37,12 @@ class IndexController extends AbstractController
         $redis = $container->get(\Hyperf\Redis\Redis::class);
         $result = $redis->keys('*');
 
-        var_dump($result);
+        return $result;
+
+        $k1 = $redis->set('k1', 'v1');
+        $k1 = $redis->get('k1');
+        return $k1;
+
     }
 
     public function testdb()
