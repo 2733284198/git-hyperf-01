@@ -64,26 +64,19 @@ class IndexController extends AbstractController
         $row = Db::table('t1')->first(); // sql 会自动加上 limit 1
         var_dump($row);
 
-        var_dump($row);
 
-//        $res = DB::query("SELECT * FROM 't1'; ");
-//        foreach ($res as $r) {
-//            var_dump($r);
-//        }
+//        $users = Db::select('SELECT * FROM `t1` WHERE id > 0',[1]);  //  返回array
+//        $users = Db::select('SELECT * FROM `t1` WHERE id > 0' );  //  返回array
+        $users = Db::select('SELECT * FROM `t1` ' );  //  返回array
 
-//        var_dump($res);
-//
+        foreach($users as $user){
+            echo $user->name;
+        }
+
+        return $users;
+
 //        $users = Db::table('user')->get("id,name");
         echo 'testdb';
 
-
-//        $users = Db::select('SELECT * FROM `t1` ');  //  返回array
-//        var_dump(Arr::last(Db::getQueryLog()));
-
-//        foreach($users as $user){
-//            echo $user->id;
-//        }
-
-//        $users = Db::table('t1')->get();
     }
 }
