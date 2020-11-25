@@ -9,12 +9,16 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
+
 namespace App\Controller;
 
 use Hyperf\DbConnection\Db;
+use Hyperf\Logger\LoggerFactory;
 use Hyperf\Utils\Arr;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Snowflake\IdGeneratorInterface;
+use App\Model\T1model;
+
 
 class IndexController extends AbstractController
 {
@@ -59,24 +63,44 @@ class IndexController extends AbstractController
 
     }
 
-    public function testdb()
+    public function testlog()
     {
-        $row = Db::table('t1')->first(); // sql 会自动加上 limit 1
-        var_dump($row);
+        echo 'testlog';
 
+//        $logger = LoggerFactory::class->get('log', 'default');
+//        $logger->info('Your log message');
+    }
 
-//        $users = Db::select('SELECT * FROM `t1` WHERE id > 0',[1]);  //  返回array
-//        $users = Db::select('SELECT * FROM `t1` WHERE id > 0' );  //  返回array
-        $users = Db::select('SELECT * FROM `t1` ' );  //  返回array
+    public function testdb2()
+    {
+//        $users = T1model::query()->find([1, 2]);
 
-        foreach($users as $user){
-            echo $user->name;
-        }
+        $users = Db::table('t1')->paginate(1);
 
         return $users;
 
+    }
+
+    public function testdb()
+    {
+
+        $user = T1model::query()->where('id', 1)->first();
+        $user->name = 'Hyperf';
+        $user->save();
+
+        Db::enableQueryLog();
+        $row = Db::table('t1')->first(); // sql 会自动加上 limit 1
+        var_dump($row);
+//        $users = Db::select('SELECT * FROM `t1` WHERE id > 0',[1]);  //  返回array
+//        $users = Db::select('SELECT * FROM `t1` WHERE id > 0' );  //  返回array
+        $users = Db::select('SELECT * FROM `t1` ');  //  返回array
+        foreach ($users as $user) {
+            echo $user->name;
+        }
+        return $users;
+        // 打印最后一条 SQL 相关数据
+        var_dump(Arr::last(Db::getQueryLog()));
 //        $users = Db::table('user')->get("id,name");
         echo 'testdb';
-
     }
 }

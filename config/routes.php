@@ -21,3 +21,5 @@ Router::get('/favicon.ico', function () {
 Router::get('/testdb', 'App\Controller\IndexController@testdb');
 Router::get('/testredis', 'App\Controller\IndexController@testredis');
 Router::get('/testsnowflake', 'App\Controller\IndexController@testsnowflake');
+Router::get('/testlog', 'App\Controller\IndexController@testlog');
+Router::get('/testdb2', 'App\Controller\IndexController@testdb2');

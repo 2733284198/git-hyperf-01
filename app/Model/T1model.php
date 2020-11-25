@@ -16,13 +16,15 @@ class T1model extends Model
 
     protected $table = 't1';
     protected $primaryKey = 'id';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['id', 'name'];
+
     /**
      * The attributes that should be cast to native types.
      *
