@@ -19,7 +19,7 @@
         "hyperf/config": "~2.0.0",
         "hyperf/db-connection": "^2.0",
         "hyperf/framework": "~2.0.0",
-        "hyperf/guzzle": "~2.0.0",
+        "hyperf/guzzle": "^2.0",
         "hyperf/http-server": "~2.0.0",
         "hyperf/logger": "~2.0.0",
         "hyperf/memory": "~2.0.0",
@@ -36,7 +36,12 @@
         "hyperf/paginator": "^2.0",
         "hyperf/model-cache": "^2.0",
         "hyperf/http-message": "^2.0",
-        "hyperf/session": "^2.0"
+        "hyperf/session": "^2.0",
+        "hyperf/filesystem": "^2.0",
+        "xxtime/flysystem-aliyun-oss": "^1.5",
+        "overtrue/flysystem-qiniu": "^1.0",
+        "overtrue/flysystem-cos": "^2.1",
+        "hyperf/validation": "^2.0"
     },
     "require-dev": {
         "swoole/ide-helper": "^4.5",

@@ -15,3 +15,18 @@ REDIS_HOST=192.168.88.133
 REDIS_AUTH=134
 REDIS_PORT=6379
 REDIS_DB=0
+
+
+# 首先执行
+composer require hyperf/filesystem
+# 使用阿里云 OSS 适配器时执行
+composer require xxtime/flysystem-aliyun-oss
+# 使用 S3 适配器时执行
+composer require league/flysystem-aws-s3-v3
+composer require hyperf/guzzle
+# 使用七牛云（测试）适配器时执行
+composer require overtrue/flysystem-qiniu
+# 使用内存适配器时执行
+composer require league/flysystem-memory
+# 使用腾讯云 COS 适配器时执行
+composer require overtrue/flysystem-cos

@@ -83,14 +83,8 @@ class IndexController extends AbstractController
     {
 //        $users = T1model::query()->find([1, 2]);
 
-        $users = Db::table('t1')->where('age', '>', 10)->paginate(10);
+        $users = Db::table('wm_shop')->where('id', '>', 1)->paginate(10);
 
-        var_dump($users);
-
-        $deluser = T1model::query()->find(4);
-        $deluser->delete();
-
-        $users = Db::table('t1')->where('age', '>', 10)->paginate(10);
         return $users;
     }
 
@@ -157,16 +151,17 @@ class IndexController extends AbstractController
     public function testdb()
     {
 
-        $user = T1model::query()->where('id', 1)->first();
-        $user->name = 'Hyperf';
-        $user->save();
+//        $user = Wmshop::query()->where('id', 1)->firstOrFail();
+        $user = Wmshop::query()->where('id', 1)->firstOrFail();
+//        $user->name = 'Hyperf';
+//        $user->save();
 
         Db::enableQueryLog();
-        $row = Db::table('t1')->first(); // sql 会自动加上 limit 1
+        $row = Db::table('tb_wm_shop')->first(); // sql 会自动加上 limit 1
         var_dump($row);
 //        $users = Db::select('SELECT * FROM `t1` WHERE id > 0',[1]);  //  返回array
 //        $users = Db::select('SELECT * FROM `t1` WHERE id > 0' );  //  返回array
-        $users = Db::select('SELECT * FROM `t1` ');  //  返回array
+        $users = Db::select('SELECT * FROM `tb_wm_shop` ');  //  返回array
         foreach ($users as $user) {
             echo $user->name;
         }
