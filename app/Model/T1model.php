@@ -4,6 +4,8 @@ declare (strict_types=1);
 namespace App\Model;
 
 use Hyperf\DbConnection\Model\Model;
+use Hyperf\Database\Model\SoftDeletes;
+
 /**
  */
 class T1model extends Model
@@ -31,4 +33,9 @@ class T1model extends Model
      * @var array
      */
     protected $casts = [];
+
+    /*
+     * soft delete
+     */
+    use SoftDeletes;
 }

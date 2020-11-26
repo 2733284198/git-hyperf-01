@@ -75,10 +75,15 @@ class IndexController extends AbstractController
     {
 //        $users = T1model::query()->find([1, 2]);
 
-        $users = Db::table('t1')->paginate(1);
+        $users = Db::table('t1')->where('age', '>', 10) ->paginate(10);
 
+        var_dump($users);
+
+        $deluser = T1model::query()->find(4);
+        $deluser->delete();
+
+        $users = Db::table('t1')->where('age', '>', 10) ->paginate(10);
         return $users;
-
     }
 
     public function testdb()
