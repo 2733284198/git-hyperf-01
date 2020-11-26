@@ -14,10 +14,7 @@ use Hyperf\Validation\Contract\ValidatorFactoryInterface;
 
 /**
  * @AutoController
- * Class validatedctl
- * @package App\Controller
  */
-
 class validatedctl
 {
     /**

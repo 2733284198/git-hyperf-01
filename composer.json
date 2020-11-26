@@ -24,7 +24,7 @@
         "hyperf/logger": "~2.0.0",
         "hyperf/memory": "~2.0.0",
         "hyperf/process": "~2.0.0",
-        "hyperf/redis": "~2.0.0",
+        "hyperf/redis": "^2.0",
         "hyperf/database": "~2.0.0",
         "hyperf/amqp": "~2.0.0",
         "hyperf/elasticsearch": "~2.0.0",
@@ -41,16 +41,20 @@
         "xxtime/flysystem-aliyun-oss": "^1.5",
         "overtrue/flysystem-qiniu": "^1.0",
         "overtrue/flysystem-cos": "^2.1",
-        "hyperf/validation": "^2.0"
+        "hyperf/validation": "^2.0",
+        "doctrine/annotations": "^1.11",
+        "swoole/ide-helper": "@dev",
+        "swoole/debugger": "dev-master"
     },
     "require-dev": {
-        "swoole/ide-helper": "^4.5",
         "friendsofphp/php-cs-fixer": "^2.14",
         "mockery/mockery": "^1.0",
         "phpstan/phpstan": "^0.12",
         "hyperf/devtool": "~2.0.0",
         "hyperf/testing": "~2.0.0",
-        "hyperf/watcher": "^2.0"
+        "hyperf/watcher": "^2.0",
+        "filp/whoops": "^2.9",
+        "eaglewu/swoole-ide-helper": "dev-master"
     },
     "suggest": {
         "ext-openssl": "Required to use HTTPS.",
