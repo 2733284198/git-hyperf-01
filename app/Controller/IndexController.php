@@ -87,6 +87,17 @@ class IndexController extends AbstractController
         return $users;
     }
 
+    public function testshopdb2()
+    {
+        echo 'testshopdb2<hr>';
+
+        $shoplist = Wmshop::getShopList();
+
+//        $shoplist = Wmshop::getbyid(10000);
+
+        return $shoplist;
+    }
+
     public function testshopdb()
     {
         echo 'testshopdb<hr>';

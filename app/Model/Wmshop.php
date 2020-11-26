@@ -32,4 +32,23 @@ class Wmshop extends Model
 
     /* soft delete */
 //    use SoftDeletes;
+
+    /**
+     * @return array
+     */
+    public static function getShopList()
+    {
+//        $data = self::all()->toArray();
+        $data = self::all();
+
+        return $data;
+    }
+
+    public static function getbyid($id)
+    {
+        $id = intval($id);
+        $data = self::query()->where('id', $id)->first();
+
+        return $data;
+    }
 }

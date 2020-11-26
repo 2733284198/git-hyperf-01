@@ -28,4 +28,5 @@ Router::get('/testdb2', 'App\Controller\IndexController@testdb2');
 
 ## ty_pay
 Router::get('/testshopdb', 'App\Controller\IndexController@testshopdb');
+Router::get('/testshopdb2', 'App\Controller\IndexController@testshopdb2');
 
