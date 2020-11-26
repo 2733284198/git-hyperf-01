@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Wmshop;
 use Hyperf\DbConnection\Db;
 use Hyperf\Logger\LoggerFactory;
 use Hyperf\Utils\Arr;
@@ -75,15 +76,45 @@ class IndexController extends AbstractController
     {
 //        $users = T1model::query()->find([1, 2]);
 
-        $users = Db::table('t1')->where('age', '>', 10) ->paginate(10);
+        $users = Db::table('t1')->where('age', '>', 10)->paginate(10);
 
         var_dump($users);
 
         $deluser = T1model::query()->find(4);
         $deluser->delete();
 
-        $users = Db::table('t1')->where('age', '>', 10) ->paginate(10);
+        $users = Db::table('t1')->where('age', '>', 10)->paginate(10);
         return $users;
+    }
+
+    public function testshopdb()
+    {
+        echo 'testshopdb<hr>';
+
+        /*$res = Db::select('SELECT * FROM `tb_wm_shop` ');  //  返回array
+
+        foreach ($res as $data) {
+            echo $data->id;
+            echo $data->shopname;
+        }*/
+//
+//        $res = Wmshop::query()->where('id', '>', 1)->get();
+        $res = Wmshop::query()->where('id', '>', 1)->find([10000, 10001, 10002]);
+//        $res = Wmshop::query()->where('id', '>', 1)->find(1);
+
+//        $res = Wmshop::query()->find(1);
+
+//        $res->name = 'Hyperf';
+//        $res->save();
+
+        echo '<hr>';
+
+        $shopdel = Wmshop::query()->find(10212);
+        if ($shopdel) {
+            $shopdel->delete();
+        }
+
+        return $res;
     }
 
     public function testdb()

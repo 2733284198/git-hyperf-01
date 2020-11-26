@@ -23,3 +23,9 @@ Router::get('/testredis', 'App\Controller\IndexController@testredis');
 Router::get('/testsnowflake', 'App\Controller\IndexController@testsnowflake');
 Router::get('/testlog', 'App\Controller\IndexController@testlog');
 Router::get('/testdb2', 'App\Controller\IndexController@testdb2');
+
+# 11-26
+
+## ty_pay
+Router::get('/testshopdb', 'App\Controller\IndexController@testshopdb');
+
