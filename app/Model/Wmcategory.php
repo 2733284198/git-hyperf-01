@@ -6,14 +6,14 @@ namespace App\Model;
 use Hyperf\DbConnection\Model\Model;
 /**
  */
-class Wmfood extends Model
+class Wmcategory extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'wm_food';
+    protected $table = 'wm_food_category';
     protected $primaryKey = 'id';
 
     public $timestamps = false;

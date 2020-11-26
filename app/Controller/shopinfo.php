@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Wmcategory;
 use App\Model\Wmshop;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
+
+use App\Model\Wmfood;
 
 /**
  * @AutoController()
@@ -73,5 +76,51 @@ class shopinfo
 
     }
 
+    /* hop food list */
+    public function get_shopinfo(RequestInterface $request)
+    {
+        echo '<hr>get_shopinfo';
+
+        $shop_result = Wmshop::query()->where('id', 10000)->firstOrFail();
+
+        // 返回信息
+        $all_input = $request->all();
+//        return ($all_input);
+
+        $result_message = [];
+        $result_message['message'] = ['没有店铺数据'];
+        $result_message['code'] = ['error'];
+
+        // 获取数据
+
+        // 请求参数
+        $shop_id = $request->input('shop_id');
+        $shop_res = Wmshop::query()->where('shop_id', $shop_id)->first();
+        // 查询条件
+        if ( $shop_res == null ) {
+            return 'no this shop';
+        }
+
+        $cate_res = Wmcategory::where('shop_id', $shop_id)->get();
+        $res_arr = [];
+
+
+        $res_arr['foodCate'] = $cate_res;
+        $res_arr['shop'] = $shop_res;
+
+        foreach ($cate_res as $k => $v) {
+            $res_arr['foodCate'][$k] = $cate_res[$k];
+        }
+
+        foreach ($res_arr['foodCate'] as $k => $v) {
+            $cate_id = $res_arr['foodCate'][$k]['cate_id'];
+            $food_res = Wmfood::where('cate_id', $cate_id)->get();
+
+            $res_arr['food'][$cate_id] = $food_res;
+        }
+
+        return $res_arr;
+
+    }
 
 }

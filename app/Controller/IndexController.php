@@ -29,7 +29,11 @@ class IndexController extends AbstractController
 {
     public function index()
     {
-        echo 'testdb';
+        $shoplist = Wmshop::getbyid(10000);
+
+        return $shoplist;
+
+        echo 'testdb<hr>';
 
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
@@ -38,6 +42,7 @@ class IndexController extends AbstractController
             'method' => $method,
             'message' => "Hello {$user}.",
         ];
+
     }
 
     public function testsnowflake()
