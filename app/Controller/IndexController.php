@@ -14,11 +14,15 @@ namespace App\Controller;
 
 use App\Model\Wmshop;
 use Hyperf\DbConnection\Db;
+use Hyperf\HttpServer\Request;
 use Hyperf\Logger\LoggerFactory;
 use Hyperf\Utils\Arr;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Snowflake\IdGeneratorInterface;
 use App\Model\T1model;
+
+use Hyperf\HttpServer\Contract\RequestInterface;
+use Hyperf\HttpServer\Annotation\AutoController;
 
 
 class IndexController extends AbstractController
@@ -48,8 +52,8 @@ class IndexController extends AbstractController
 
     public function testredis()
     {
-        $res = phpinfo();
-        return $res;
+//        $res = phpinfo();
+//        return $res;
 
         $container = ApplicationContext::getContainer();
 
@@ -58,9 +62,12 @@ class IndexController extends AbstractController
 
 //        return $result;
 
-        $k1 = $redis->set('k1', 'v1');
-        $k1 = $redis->get('k1');
-//        return $k1;
+        $k1 = $redis->set('k1', 'v1111');
+        $k1value = $redis->get('k1');
+
+        return $k1value;
+
+//        return json($k1value);
 
     }
 
@@ -87,13 +94,32 @@ class IndexController extends AbstractController
         return $users;
     }
 
-    public function testshopdb2()
+    public function testrequest(RequestInterface $request)
     {
-        echo 'testshopdb2<hr>';
+        echo 'testrequest<hr>';
 
-        $shoplist = Wmshop::getShopList();
+        $uri = $request->path();
+        $all = $request->all();
+        $name = $request->input('name');
 
-//        $shoplist = Wmshop::getbyid(10000);
+        $res = [
+            'uri' => $uri,
+            'all' => $all,
+          'name' => $name
+        ];
+
+        return $res;
+    }
+
+
+    public function testshopdb2(Request $request)
+    {
+        $req = $request->getAttributes();
+        var_dump($req);
+
+//        $shoplist = Wmshop::getShopList();
+
+        $shoplist = Wmshop::getbyid(10000);
 
         return $shoplist;
     }
