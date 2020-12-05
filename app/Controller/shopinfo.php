@@ -6,11 +6,13 @@ namespace App\Controller;
 
 use App\Model\Wmcategory;
 use App\Model\Wmshop;
+use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 
 use App\Model\Wmfood;
+use mysql_xdevapi\Table;
 
 /**
  * @AutoController()
@@ -115,6 +117,7 @@ class shopinfo
         foreach ($res_arr['foodCate'] as $k => $v) {
             $cate_id = $res_arr['foodCate'][$k]['cate_id'];
             $food_res = Wmfood::where('cate_id', $cate_id)->get();
+//            $food_res = Db::table('tb_wm_food')->where('cate_id', $cate_id)->get();
 
             $res_arr['food'][$cate_id] = $food_res;
         }
